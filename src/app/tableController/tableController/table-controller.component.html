@@ -1,0 +1,18 @@
+<div *ngIf="allData">
+    <select (change)="onChangeType($event)">
+        <option></option>
+        <option *ngFor="let type of allData | mykeyvalue">{{type.key}}</option>
+     </select>
+
+     <div class="content" *ngIf="currentData">
+        <div>
+            <div *ngFor="let config of currentData.config | mykeyvalue">
+                <h3>{{config.key}}</h3>
+                <div>Sortable <input name="sortable" type="checkbox" (change)="onChange($event, config.key, true)" [checked]="config.value.sortable"></div>
+                <div>Title <input name="title" type="text" (change)="onChange($event, config.key, false)" [value]="config.value.title"></div>
+                <div>Include <input name="include" type="checkbox" (change)="onChange($event, config.key, true)" [checked]="config.value.include"></div>
+            </div>
+        </div>
+     </div>
+
+</div>

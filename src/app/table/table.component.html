@@ -1,0 +1,18 @@
+<table class="table" *ngIf="config && items">
+    <tr>
+        <th *ngFor="let config of config | mykeyvalue">
+            <span>{{config.value.title}}</span>
+            <span class="sort" *ngIf="config.value.sortable">
+                <div (click)="onSort(config.key, 'asc')" class="arrow arrow-up"></div>
+                <div (click)="onSort(config.key, 'desc')" class="arrow arrow-down"></div>
+            </span>
+        </th>
+    </tr>
+    <tr *ngFor="let field of items">
+        <td *ngFor="let config of config | mykeyvalue">
+            {{config.value.include ? field[config.key] : ''}}
+        </td>
+    </tr>
+</table>
+<br><br>
+<button [disabled]="end" (click)="loadMore()">load more</button>
