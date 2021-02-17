@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { getAllData, setType } from '../../../backend';
-
+import { getAllData, setType } from '../../backend';
 
 // this component has priority it can direct modify the data
 // treated as admin section
 
 @Component({
-  selector: 'app-table-controller',
-  templateUrl: './table-controller.component.html',
-  styleUrls: ['./table-controller.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class TableControllerComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   allData: any;
   currentData: any
@@ -19,6 +18,7 @@ export class TableControllerComponent implements OnInit {
 
   ngOnInit(): void {
     this.allData = getAllData();
+    console.log('this.allData', this.allData)
   }
 
   onChangeType(event): void {
@@ -34,5 +34,4 @@ export class TableControllerComponent implements OnInit {
     const value = isCheckbox ? target.checked : target.value;
     this.currentData.config[key][target.name] = value
   }
-
 }
